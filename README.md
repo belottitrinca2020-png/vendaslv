@@ -1,1 +1,1728 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoClean Pro - Lavagem Automotiva Premium</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .admin-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .admin-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        
+        .section-title {
+            text-align: center;
+            color: white;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 18px;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        }
+        
+        .service-card.popular {
+            border: 3px solid #ffd700;
+            transform: scale(1.05);
+        }
+        
+        .service-card.popular::before {
+            content: "⭐ MAIS PROCURADO";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #1a202c;
+            padding: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .service-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 10px;
+        }
+        
+        .service-duration {
+            color: #64748b;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .service-price {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 30px;
+        }
+        
+        .service-price .currency {
+            font-size: 18px;
+            vertical-align: top;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .service-features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #374151;
+        }
+        
+        .service-features li::before {
+            content: "✅";
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        
+        .service-button {
+            width: 100%;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .service-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.4);
+        }
+        
+        /* Features Section */
+        .features-section {
+            padding: 80px 20px;
+            color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .feature-description {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            color: white;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .contact-icon {
+            font-size: 32px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 16px;
+            border-radius: 50%;
+        }
+        
+        .contact-text {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal.show {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 10px;
+        }
+        
+        .modal-subtitle {
+            color: #64748b;
+            font-size: 16px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6b7280;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        
+        .close-btn:hover {
+            background: #f3f4f6;
+        }
+        
+        /* Form Styles */
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+        
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.2s;
+            background: white;
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #1e3c72;
+            box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.1);
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 8px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.2s;
+            flex: 1;
+        }
+        
+        .radio-option:hover {
+            border-color: #1e3c72;
+        }
+        
+        .radio-option.selected {
+            border-color: #1e3c72;
+            background: rgba(30, 60, 114, 0.1);
+        }
+        
+        .radio-option input[type="radio"] {
+            margin: 0;
+        }
+        
+        .btn {
+            padding: 16px 24px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.3);
+        }
+        
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: white;
+            font-size: 18px;
+            padding: 20px 30px;
+        }
+        
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        .btn-full {
+            width: 100%;
+        }
+        
+        /* Order Summary */
+        .order-summary {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .order-item:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 18px;
+            color: #1e3c72;
+        }
+        
+        /* Success Message */
+        .success-message {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .success-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        /* Admin Panel Styles */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 2000;
+            overflow-y: auto;
+        }
+        
+        .admin-panel.show {
+            display: block;
+        }
+        
+        .admin-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .admin-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .admin-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .admin-content {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+        
+        .stat-label {
+            color: #64748b;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .appointments-table {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .table-header {
+            background: #f8fafc;
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .table-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a202c;
+        }
+        
+        .filter-select {
+            padding: 8px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        .appointments-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .appointment-item {
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .appointment-item:last-child {
+            border-bottom: none;
+        }
+        
+        .appointment-info h4 {
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 5px;
+        }
+        
+        .appointment-info p {
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .status-confirmed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-progress {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .status-completed {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+        
+        .status-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .status-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .status-btn.confirm {
+            background: #10b981;
+            color: white;
+        }
+        
+        .status-btn.progress {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .status-btn.complete {
+            background: #6366f1;
+            color: white;
+        }
+        
+        /* Login Modal */
+        .login-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .hero-features {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-card.popular {
+                transform: none;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .modal-content {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+            }
+            
+            .appointment-item {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .admin-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .service-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .service-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        
+        .service-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+        
+        .service-card:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                🚗 AutoClean Pro
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#features">Diferenciais</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                    <li><button class="admin-btn" onclick="openLoginModal()">Admin</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>🚗 Lavagem Automotiva Premium</h1>
+            <p>Cuidamos do seu carro com carinho e profissionalismo. Agendamento online, busca e entrega no local!</p>
+            
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <span>🏠</span>
+                    <span>Busca e Entrega</span>
+                </div>
+                <div class="hero-feature">
+                    <span>⏰</span>
+                    <span>Agendamento Online</span>
+                </div>
+                <div class="hero-feature">
+                    <span>✨</span>
+                    <span>Produtos Premium</span>
+                </div>
+                <div class="hero-feature">
+                    <span>👨‍🔧</span>
+                    <span>Profissionais Qualificados</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="section-title">🧽 Nossos Serviços</h2>
+            <p class="section-subtitle">Escolha o serviço ideal para seu veículo. Todos com garantia de qualidade!</p>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">🚿</div>
+                    <h3 class="service-name">Lavagem Simples</h3>
+                    <p class="service-duration">30-45 minutos</p>
+                    <div class="service-price">
+                        <span class="currency">R$</span>25<span style="font-size: 18px;">,00</span>
+                    </div>
+                    <ul class="service-features">
+                        <li>Lavagem externa completa</li>
+                        <li>Aspiração interna</li>
+                        <li>Limpeza dos vidros</li>
+                        <li>Secagem com flanela</li>
+                        <li>Pneus pretinhos</li>
+                    </ul>
+                    <button class="service-button" onclick="openBookingModal('Lavagem Simples', 25.00, '30-45 minutos', ['Lavagem externa completa', 'Aspiração interna', 'Limpeza dos vidros', 'Secagem com flanela', 'Pneus pretinhos'])">
+                        Agendar Serviço
+                    </button>
+                </div>
+
+                <!-- Service 2 - Popular -->
+                <div class="service-card popular">
+                    <div class="service-icon">✨</div>
+                    <h3 class="service-name">Lavagem Completa</h3>
+                    <p class="service-duration">60-90 minutos</p>
+                    <div class="service-price">
+                        <span class="currency">R$</span>45<span style="font-size: 18px;">,00</span>
+                    </div>
+                    <ul class="service-features">
+                        <li>Tudo da lavagem simples</li>
+                        <li>Limpeza interna detalhada</li>
+                        <li>Cera protetora</li>
+                        <li>Limpeza do motor</li>
+                        <li>Hidratação dos pneus</li>
+                        <li>Aromatização</li>
+                    </ul>
+                    <button class="service-button" onclick="openBookingModal('Lavagem Completa', 45.00, '60-90 minutos', ['Tudo da lavagem simples', 'Limpeza interna detalhada', 'Cera protetora', 'Limpeza do motor', 'Hidratação dos pneus', 'Aromatização'])">
+                        Agendar Serviço
+                    </button>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">👑</div>
+                    <h3 class="service-name">Lavagem Premium</h3>
+                    <p class="service-duration">90-120 minutos</p>
+                    <div class="service-price">
+                        <span class="currency">R$</span>75<span style="font-size: 18px;">,00</span>
+                    </div>
+                    <ul class="service-features">
+                        <li>Tudo da lavagem completa</li>
+                        <li>Enceramento premium</li>
+                        <li>Limpeza detalhada do chassi</li>
+                        <li>Hidratação do couro</li>
+                        <li>Limpeza dos para-choques</li>
+                        <li>Proteção UV</li>
+                        <li>Garantia de 7 dias</li>
+                    </ul>
+                    <button class="service-button" onclick="openBookingModal('Lavagem Premium', 75.00, '90-120 minutos', ['Tudo da lavagem completa', 'Enceramento premium', 'Limpeza detalhada do chassi', 'Hidratação do couro', 'Limpeza dos para-choques', 'Proteção UV', 'Garantia de 7 dias'])">
+                        Agendar Serviço
+                    </button>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">💎</div>
+                    <h3 class="service-name">Detalhamento</h3>
+                    <p class="service-duration">3-4 horas</p>
+                    <div class="service-price">
+                        <span class="currency">R$</span>150<span style="font-size: 18px;">,00</span>
+                    </div>
+                    <ul class="service-features">
+                        <li>Serviço completo premium</li>
+                        <li>Polimento da pintura</li>
+                        <li>Remoção de riscos leves</li>
+                        <li>Tratamento de couro</li>
+                        <li>Limpeza profunda do motor</li>
+                        <li>Cera de carnaúba</li>
+                        <li>Proteção cerâmica</li>
+                        <li>Garantia de 15 dias</li>
+                    </ul>
+                    <button class="service-button" onclick="openBookingModal('Detalhamento', 150.00, '3-4 horas', ['Serviço completo premium', 'Polimento da pintura', 'Remoção de riscos leves', 'Tratamento de couro', 'Limpeza profunda do motor', 'Cera de carnaúba', 'Proteção cerâmica', 'Garantia de 15 dias'])">
+                        Agendar Serviço
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="section-title">⭐ Nossos Diferenciais</h2>
+            <p class="section-subtitle">Por que escolher a AutoClean Pro para cuidar do seu veículo</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3 class="feature-title">Busca e Entrega</h3>
+                    <p class="feature-description">Buscamos seu carro no local de sua preferência e entregamos limpo e perfumado</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">Agendamento Online</h3>
+                    <p class="feature-description">Agende seu horário pelo site, escolha data e horário que melhor se adequa à sua rotina</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3 class="feature-title">Produtos Premium</h3>
+                    <p class="feature-description">Utilizamos apenas produtos de alta qualidade para garantir o melhor resultado</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🔧</div>
+                    <h3 class="feature-title">Profissionais Qualificados</h3>
+                    <p class="feature-description">Equipe treinada e experiente para cuidar do seu veículo com máximo cuidado</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 class="feature-title">Garantia de Qualidade</h3>
+                    <p class="feature-description">Todos os serviços possuem garantia. Não ficou satisfeito? Refazemos sem custo</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">Preços Justos</h3>
+                    <p class="feature-description">Qualidade premium com preços acessíveis e várias formas de pagamento</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">📞 Entre em Contato</h2>
+            <p class="section-subtitle">Tire suas dúvidas ou solicite um orçamento personalizado</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-text">(11) 99999-9999</div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-text">contato@autocleanpro.com</div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">⏰</div>
+                    <div class="contact-text">Seg-Sáb: 8h às 18h</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 AutoClean Pro. Todos os direitos reservados.</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Lavagem automotiva premium com qualidade garantida</p>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeBookingModal()">&times;</button>
+            
+            <div class="modal-header">
+                <h2 class="modal-title">📅 Agendar Serviço</h2>
+                <p class="modal-subtitle">Preencha os dados para finalizar seu agendamento</p>
+            </div>
+            
+            <!-- Service Summary -->
+            <div id="serviceSummary" class="order-summary">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            
+            <!-- Booking Form -->
+            <form id="bookingForm" class="form">
+                <div class="form-group">
+                    <label class="form-label">Nome Completo *</label>
+                    <input type="text" id="customerName" class="form-input" placeholder="Seu nome completo" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">WhatsApp *</label>
+                        <input type="tel" id="customerPhone" class="form-input" placeholder="(11) 99999-9999" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="customerEmail" class="form-input" placeholder="seu@email.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Veículo *</label>
+                    <input type="text" id="customerVehicle" class="form-input" placeholder="Ex: Honda Civic 2020 Prata" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Local do Serviço *</label>
+                    <div class="radio-group">
+                        <label class="radio-option" onclick="selectLocation('bring')">
+                            <input type="radio" name="location" value="bring" required>
+                            <span>🏢 Trago o carro</span>
+                        </label>
+                        <label class="radio-option" onclick="selectLocation('pickup')">
+                            <input type="radio" name="location" value="pickup" required>
+                            <span>🏠 Buscar/Entregar</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div id="addressGroup" class="form-group" style="display: none;">
+                    <label class="form-label">Endereço para Busca/Entrega *</label>
+                    <textarea id="customerAddress" class="form-textarea" placeholder="Rua, número, bairro, cidade..."></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Data Preferida *</label>
+                        <input type="date" id="serviceDate" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Horário Preferido *</label>
+                        <select id="serviceTime" class="form-select" required>
+                            <option value="">Selecione o horário</option>
+                            <option value="08:00">08:00</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Observações</label>
+                    <textarea id="customerNotes" class="form-textarea" placeholder="Alguma observação especial sobre o veículo ou serviço..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-whatsapp btn-full">
+                    📱 Confirmar Agendamento
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeSuccessModal()">&times;</button>
+            
+            <div class="success-message">
+                <div class="success-icon">✅</div>
+                <h3>Agendamento Enviado!</h3>
+                <p>Você será redirecionado para o WhatsApp para confirmação...</p>
+            </div>
+            
+            <div style="text-align: center; color: #64748b;">
+                <p><strong>Próximos passos:</strong></p>
+                <p>1️⃣ Você será direcionado para nosso WhatsApp</p>
+                <p>2️⃣ Confirmaremos disponibilidade</p>
+                <p>3️⃣ Realizaremos o serviço no horário agendado</p>
+                <p>4️⃣ Pagamento após a conclusão</p>
+            </div>
+            
+            <button onclick="closeSuccessModal()" class="btn btn-primary btn-full" style="margin-top: 20px;">
+                Entendi
+            </button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeLoginModal()">&times;</button>
+            
+            <div class="modal-header">
+                <h2 class="modal-title">🔐 Acesso Administrativo</h2>
+                <p class="modal-subtitle">Digite a senha para acessar o painel</p>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label class="form-label">Senha</label>
+                    <input type="password" id="adminPassword" class="form-input" placeholder="Digite a senha" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full">
+                    Entrar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" class="admin-panel">
+        <div class="admin-header">
+            <h1 class="admin-title">🛠️ Painel Administrativo - AutoClean Pro</h1>
+            <button class="admin-close" onclick="closeAdminPanel()">Fechar</button>
+        </div>
+        
+        <div class="admin-content">
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalAppointments">0</div>
+                    <div class="stat-label">Total de Agendamentos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="pendingAppointments">0</div>
+                    <div class="stat-label">Pendentes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="confirmedAppointments">0</div>
+                    <div class="stat-label">Confirmados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="completedAppointments">0</div>
+                    <div class="stat-label">Concluídos</div>
+                </div>
+            </div>
+            
+            <div class="appointments-table">
+                <div class="table-header">
+                    <h3 class="table-title">📋 Agendamentos</h3>
+                    <select class="filter-select" id="statusFilter" onchange="filterAppointments()">
+                        <option value="">Todos os Status</option>
+                        <option value="pending">Pendentes</option>
+                        <option value="confirmed">Confirmados</option>
+                        <option value="progress">Em Andamento</option>
+                        <option value="completed">Concluídos</option>
+                    </select>
+                </div>
+                
+                <div class="appointments-list" id="appointmentsList">
+                    <div style="padding: 40px; text-align: center; color: #64748b;">
+                        <p>Nenhum agendamento encontrado.</p>
+                        <p style="font-size: 14px; margin-top: 10px;">Os agendamentos aparecerão aqui quando os clientes fizerem pedidos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentService = {};
+        let appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+        
+        // Configuration
+        const WHATSAPP_NUMBER = '5517991243532'; // Replace with actual number
+        const ADMIN_PASSWORD = 'admin123'; // Change this password
+        
+        // Open booking modal
+        function openBookingModal(serviceName, price, duration, features) {
+            currentService = {
+                name: serviceName,
+                price: price,
+                duration: duration,
+                features: features
+            };
+            
+            updateServiceSummary();
+            document.getElementById('bookingModal').classList.add('show');
+            document.getElementById('bookingForm').reset();
+            
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('serviceDate').min = today;
+        }
+        
+        // Close booking modal
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.remove('show');
+        }
+        
+        // Close success modal
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.remove('show');
+        }
+        
+        // Open login modal
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.add('show');
+        }
+        
+        // Close login modal
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('show');
+        }
+        
+        // Close admin panel
+        function closeAdminPanel() {
+            document.getElementById('adminPanel').classList.remove('show');
+        }
+        
+        // Update service summary
+        function updateServiceSummary() {
+            const summaryHTML = `
+                <div class="order-item">
+                    <span><strong>${currentService.name}</strong></span>
+                    <span>${currentService.duration}</span>
+                </div>
+                <div class="order-item">
+                    <span>Garantia</span>
+                    <span>Qualidade assegurada</span>
+                </div>
+                <div class="order-item">
+                    <span>Produtos</span>
+                    <span>Premium</span>
+                </div>
+                <div class="order-item">
+                    <span><strong>Valor</strong></span>
+                    <span><strong>R$ ${currentService.price.toFixed(2).replace('.', ',')}</strong></span>
+                </div>
+            `;
+            
+            document.getElementById('serviceSummary').innerHTML = summaryHTML;
+        }
+        
+        // Select location option
+        function selectLocation(type) {
+            // Remove selected class from all options
+            document.querySelectorAll('.radio-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            event.currentTarget.classList.add('selected');
+            
+            // Show/hide address field
+            const addressGroup = document.getElementById('addressGroup');
+            const addressField = document.getElementById('customerAddress');
+            
+            if (type === 'pickup') {
+                addressGroup.style.display = 'block';
+                addressField.required = true;
+            } else {
+                addressGroup.style.display = 'none';
+                addressField.required = false;
+                addressField.value = '';
+            }
+        }
+        
+        // Format phone number
+        function formatPhone(phone) {
+            const cleaned = phone.replace(/\D/g, '');
+            if (cleaned.length === 11) {
+                return `(${cleaned.slice(0, 2)}) ${cleaned.slice(2, 7)}-${cleaned.slice(7)}`;
+            }
+            return phone;
+        }
+        
+        // Generate WhatsApp message
+        function generateWhatsAppMessage(bookingData) {
+            const locationText = bookingData.location === 'pickup' 
+                ? `🏠 Buscar/Entregar no endereço:\n${bookingData.address}`
+                : '🏢 Cliente trará o veículo';
+            
+            const message = `🚗 *NOVO AGENDAMENTO - AUTOCLEAN PRO*
+
+👤 *DADOS DO CLIENTE:*
+Nome: ${bookingData.name}
+WhatsApp: ${bookingData.phone}
+${bookingData.email ? `Email: ${bookingData.email}` : ''}
+Veículo: ${bookingData.vehicle}
+
+💎 *SERVIÇO SOLICITADO:*
+🧽 ${currentService.name}
+⏰ Duração: ${currentService.duration}
+💰 Valor: R$ ${currentService.price.toFixed(2).replace('.', ',')}
+
+📅 *AGENDAMENTO:*
+Data: ${new Date(bookingData.date).toLocaleDateString('pt-BR')}
+Horário: ${bookingData.time}
+
+📍 *LOCAL:*
+${locationText}
+
+✅ *SERVIÇOS INCLUSOS:*
+${currentService.features.map(feature => `• ${feature}`).join('\n')}
+
+${bookingData.notes ? `📝 *OBSERVAÇÕES:*\n${bookingData.notes}\n` : ''}
+
+🚀 *PRÓXIMOS PASSOS:*
+Por favor, confirme a disponibilidade para este horário. Aguardo retorno para confirmação do agendamento.
+
+Obrigado!
+
+⏰ Solicitado em: ${new Date().toLocaleString('pt-BR')}`;
+
+            return encodeURIComponent(message);
+        }
+        
+        // Save appointment
+        function saveAppointment(bookingData) {
+            const appointment = {
+                id: Date.now(),
+                ...bookingData,
+                service: currentService,
+                status: 'pending',
+                createdAt: new Date().toISOString()
+            };
+            
+            appointments.push(appointment);
+            localStorage.setItem('appointments', JSON.stringify(appointments));
+            updateAdminStats();
+        }
+        
+        // Handle booking form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const bookingData = {
+                name: document.getElementById('customerName').value.trim(),
+                phone: document.getElementById('customerPhone').value.trim(),
+                email: document.getElementById('customerEmail').value.trim(),
+                vehicle: document.getElementById('customerVehicle').value.trim(),
+                location: document.querySelector('input[name="location"]:checked')?.value,
+                address: document.getElementById('customerAddress').value.trim(),
+                date: document.getElementById('serviceDate').value,
+                time: document.getElementById('serviceTime').value,
+                notes: document.getElementById('customerNotes').value.trim()
+            };
+            
+            // Validate required fields
+            if (!bookingData.name || !bookingData.phone || !bookingData.vehicle || 
+                !bookingData.location || !bookingData.date || !bookingData.time) {
+                alert('Por favor, preencha todos os campos obrigatórios!');
+                return;
+            }
+            
+            // Validate address if pickup is selected
+            if (bookingData.location === 'pickup' && !bookingData.address) {
+                alert('Por favor, informe o endereço para busca/entrega!');
+                return;
+            }
+            
+            // Validate phone number
+            const phoneNumbers = bookingData.phone.replace(/\D/g, '');
+            if (phoneNumbers.length < 10 || phoneNumbers.length > 11) {
+                alert('Por favor, insira um número de WhatsApp válido!');
+                return;
+            }
+            
+            // Format phone
+            bookingData.phone = formatPhone(bookingData.phone);
+            
+            // Save appointment
+            saveAppointment(bookingData);
+            
+            // Generate WhatsApp message
+            const message = generateWhatsAppMessage(bookingData);
+            
+            // Close booking modal
+            closeBookingModal();
+            
+            // Show success modal
+            document.getElementById('successModal').classList.add('show');
+            
+            // Redirect to WhatsApp after 2 seconds
+            setTimeout(() => {
+                const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+                window.open(whatsappURL, '_blank');
+                
+                setTimeout(() => {
+                    closeSuccessModal();
+                }, 1000);
+            }, 2000);
+        });
+        
+        // Handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('adminPassword').value;
+            
+            if (password === ADMIN_PASSWORD) {
+                closeLoginModal();
+                document.getElementById('adminPanel').classList.add('show');
+                loadAppointments();
+                updateAdminStats();
+            } else {
+                alert('Senha incorreta!');
+            }
+        });
+        
+        // Update admin statistics
+        function updateAdminStats() {
+            const total = appointments.length;
+            const pending = appointments.filter(a => a.status === 'pending').length;
+            const confirmed = appointments.filter(a => a.status === 'confirmed').length;
+            const completed = appointments.filter(a => a.status === 'completed').length;
+            
+            document.getElementById('totalAppointments').textContent = total;
+            document.getElementById('pendingAppointments').textContent = pending;
+            document.getElementById('confirmedAppointments').textContent = confirmed;
+            document.getElementById('completedAppointments').textContent = completed;
+        }
+        
+        // Load appointments in admin panel
+        function loadAppointments() {
+            const appointmentsList = document.getElementById('appointmentsList');
+            
+            if (appointments.length === 0) {
+                appointmentsList.innerHTML = `
+                    <div style="padding: 40px; text-align: center; color: #64748b;">
+                        <p>Nenhum agendamento encontrado.</p>
+                        <p style="font-size: 14px; margin-top: 10px;">Os agendamentos aparecerão aqui quando os clientes fizerem pedidos.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const sortedAppointments = appointments.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            
+            appointmentsList.innerHTML = sortedAppointments.map(appointment => `
+                <div class="appointment-item">
+                    <div class="appointment-info">
+                        <h4>${appointment.name}</h4>
+                        <p>📱 ${appointment.phone}</p>
+                        <p>🚗 ${appointment.vehicle}</p>
+                    </div>
+                    <div class="appointment-info">
+                        <h4>${appointment.service.name}</h4>
+                        <p>📅 ${new Date(appointment.date).toLocaleDateString('pt-BR')}</p>
+                        <p>⏰ ${appointment.time}</p>
+                        <p>💰 R$ ${appointment.service.price.toFixed(2).replace('.', ',')}</p>
+                    </div>
+                    <div class="appointment-info">
+                        <p>${appointment.location === 'pickup' ? '🏠 Buscar/Entregar' : '🏢 Cliente traz'}</p>
+                        ${appointment.address ? `<p style="font-size: 12px;">${appointment.address}</p>` : ''}
+                        <p style="font-size: 12px; color: #64748b;">
+                            ${new Date(appointment.createdAt).toLocaleString('pt-BR')}
+                        </p>
+                    </div>
+                    <div class="status-actions">
+                        <span class="status-badge status-${appointment.status}">
+                            ${getStatusText(appointment.status)}
+                        </span>
+                        <div style="margin-top: 8px;">
+                            ${getStatusButtons(appointment)}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Get status text
+        function getStatusText(status) {
+            const statusMap = {
+                'pending': 'Pendente',
+                'confirmed': 'Confirmado',
+                'progress': 'Em Andamento',
+                'completed': 'Concluído'
+            };
+            return statusMap[status] || status;
+        }
+        
+        // Get status buttons
+        function getStatusButtons(appointment) {
+            switch (appointment.status) {
+                case 'pending':
+                    return `
+                        <button class="status-btn confirm" onclick="updateAppointmentStatus(${appointment.id}, 'confirmed')">
+                            Confirmar
+                        </button>
+                    `;
+                case 'confirmed':
+                    return `
+                        <button class="status-btn progress" onclick="updateAppointmentStatus(${appointment.id}, 'progress')">
+                            Iniciar
+                        </button>
+                    `;
+                case 'progress':
+                    return `
+                        <button class="status-btn complete" onclick="updateAppointmentStatus(${appointment.id}, 'completed')">
+                            Concluir
+                        </button>
+                    `;
+                default:
+                    return '';
+            }
+        }
+        
+        // Update appointment status
+        function updateAppointmentStatus(appointmentId, newStatus) {
+            const appointmentIndex = appointments.findIndex(a => a.id === appointmentId);
+            if (appointmentIndex !== -1) {
+                appointments[appointmentIndex].status = newStatus;
+                localStorage.setItem('appointments', JSON.stringify(appointments));
+                loadAppointments();
+                updateAdminStats();
+            }
+        }
+        
+        // Filter appointments
+        function filterAppointments() {
+            const filter = document.getElementById('statusFilter').value;
+            const appointmentItems = document.querySelectorAll('.appointment-item');
+            
+            appointmentItems.forEach(item => {
+                const statusBadge = item.querySelector('.status-badge');
+                const status = statusBadge.className.split('status-')[1];
+                
+                if (!filter || status === filter) {
+                    item.style.display = 'grid';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+        
+        // Phone input formatting
+        document.getElementById('customerPhone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length <= 11) {
+                if (value.length <= 2) {
+                    value = value.replace(/(\d{0,2})/, '($1');
+                } else if (value.length <= 7) {
+                    value = value.replace(/(\d{2})(\d{0,5})/, '($1) $2');
+                } else {
+                    value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+                }
+            }
+            
+            e.target.value = value;
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Close modals when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                if (e.target.id === 'bookingModal') {
+                    closeBookingModal();
+                } else if (e.target.id === 'successModal') {
+                    closeSuccessModal();
+                } else if (e.target.id === 'loginModal') {
+                    closeLoginModal();
+                }
+            }
+        });
+        
+        // Close modals with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeBookingModal();
+                closeSuccessModal();
+                closeLoginModal();
+            }
+        });
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAdminStats();
+            
+            // Add fade-in animation to elements
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for animation
+            document.querySelectorAll('.feature-card, .service-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'975ee0550186f1b4',t:'MTc1NjMzMjM4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
 
